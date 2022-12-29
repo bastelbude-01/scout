@@ -2,8 +2,8 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
 
-     <!-- LIDAR-->
-     <joint name="li_top_joint" type="fixed">
+    <!-- LIDAR-->
+    <joint name="li_top_joint" type="fixed">
         <parent link="body_top"/>
         <child link="li_top"/>
         <origin xyz="0.075 0 0.047 "/>               
@@ -26,12 +26,16 @@
         <xacro:inertial_box mass="0.2" x="0.04" y="0.11" z="0.025">
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
         </xacro:inertial_box>
-     </link>
+    </link>
+    <gazebo reference="li_top">
+        <material>Gazebo/Black</material>
+    </gazebo>
 
-     <joint name="lidar_joint" type="fixed">
-        <origin xyz="0.0 0.0 0.03" rpy="-0.0 0.0 0.0"/>
-        <parent link="li_top"/>
-        <child link="lidar"/>
+
+    <joint name="lidar_joint" type="fixed">
+       <origin xyz="0.0 0.0 0.03" rpy="-0.0 0.0 0.0"/>
+       <parent link="li_top"/>
+       <child link="lidar"/>
     </joint>
 
     <link name="lidar">
@@ -43,12 +47,15 @@
         </visual>
         <collision>
             <geometry>
-                <sphere radius="0.06"/>
+                <cylinder radius="0.06" length="0.04"/>
             </geometry>
         </collision>
         <xacro:inertial_cylinder mass="0.01" radius="0.06" length="0.04">
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
         </xacro:inertial_cylinder>
     </link>
+    <gazebo reference="lidar">
+        <material>Gazebo/Red</material>
+    </gazebo>
 
 </robot>

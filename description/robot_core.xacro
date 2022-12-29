@@ -49,8 +49,8 @@
     <!-- Chassis Link AKA Rad Strebe-->
 
     <joint name="chassis_joint" type="fixed">
-        <parent link="chassis"/>
-        <child link="base_link"/>
+        <parent link="base_link"/>
+        <child link="chassis"/>
         <origin xyz="-0.0 0.0 0.0"/>               
     </joint>
 
@@ -68,15 +68,18 @@
                 <box size="0.034 0.25 0.034"/>                
             </geometry>
         </collision>
-        <xacro:inertial_box mass="0.5" x="0.034" y="0.025" z="0.034">
+        <xacro:inertial_box mass="1.5" x="0.034" y="0.025" z="0.034">
             <origin xyz="0.0 0.0 0.003" rpy="0.0 0.0 0.0"/>
         </xacro:inertial_box>
-     </link>
+    </link>
+    <gazebo reference="chassis">
+        <material>Gazebo/Black</material>
+    </gazebo>
 
-     <joint name="chassi_T_joint" type="fixed">
-        <parent link="base_link"/>
-        <child link="chassis_t"/>
-        <origin xyz="-0.12 0.0 0.0"/>               
+    <joint name="chassi_T_joint" type="fixed">
+       <parent link="base_link"/>
+       <child link="chassis_t"/>
+       <origin xyz="-0.12 0.0 0.0"/>               
     </joint>
 
     <link name="chassis_t">
@@ -93,10 +96,13 @@
                 <box size="0.034 0.25 0.034"/>                
             </geometry>
         </collision>
-        <xacro:inertial_box mass="0.5" x="0.034" y="0.025" z="0.034">
+        <xacro:inertial_box mass="1.5" x="0.034" y="0.025" z="0.034">
             <origin xyz="0.0 0.0 0.003" rpy="0.0 0.0 0.0"/>
         </xacro:inertial_box>
-     </link>
+    </link>
+    <gazebo reference="chassis_t">
+        <material>Gazebo/Black</material>
+    </gazebo>
 
     <!-- Linker Reifen-->
 
@@ -123,6 +129,9 @@
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
         </xacro:inertial_sphere>
     </link>
+    <gazebo reference="left_wheel">
+        <material>Gazebo/Blue</material>
+    </gazebo>
 
     <!-- Rechter Reifen-->
 
@@ -149,6 +158,9 @@
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
         </xacro:inertial_sphere>
     </link>
+    <gazebo reference="right_wheel">
+        <material>Gazebo/Blue</material>
+    </gazebo>
 
     <!-- Caster Wheel Joint-->
 
@@ -163,7 +175,7 @@
             <geometry>
                 <sphere radius="0.03"/>
             </geometry>
-            <material name="LightGrey"/>
+            <material name="blue"/>
         </visual>
         <collision>
             <geometry>
@@ -174,6 +186,12 @@
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
         </xacro:inertial_sphere>
     </link>
+    <gazebo reference="caster_wheel">
+        <material>Gazebo/Blue</material>
+        <mu1 value="0.001"/>
+        <mu2 value="0.001"/>
+
+    </gazebo>
 
         <!-- Chassis Aufbau-->
 
@@ -200,9 +218,12 @@
         <xacro:inertial_box mass="0.2" x="0.4" y="0.11" z="0.07">
             <origin xyz="0.0 0.0 0.003" rpy="0.0 0.0 0.0"/>
         </xacro:inertial_box>
-     </link>
+    </link>
+    <gazebo reference="body">
+        <material>Gazebo/Orange</material>
+    </gazebo>
 
-     <joint name="body_joint" type="fixed">
+    <joint name="body_joint" type="fixed">
         <parent link="body"/>
         <child link="body_top"/>
         <origin xyz="0 0.0 0.07"/>               
@@ -225,6 +246,9 @@
         <xacro:inertial_box mass="0.2" x="0.4" y="0.11" z="0.07">
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
         </xacro:inertial_box>
-     </link>
+    </link>
+    <gazebo reference="body_top">
+        <material>Gazebo/Orange</material>
+    </gazebo>
 
 </robot>
