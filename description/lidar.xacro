@@ -6,7 +6,7 @@
     <joint name="li_top_joint" type="fixed">
         <parent link="body_top"/>
         <child link="li_top"/>
-        <origin xyz="0.075 0 0.047 "/>               
+        <origin xyz="-0.12 0 0.047 "/>               
     </joint>
     
     <link name="li_top">
@@ -54,8 +54,37 @@
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
         </xacro:inertial_cylinder>
     </link>
+    
+        <!-- Gazebo Plugin-->
+
     <gazebo reference="lidar">
         <material>Gazebo/Red</material>
+        <sensor name="laser" type="ray">
+            <pose> 0 0 0 0 0 0 </pose>
+            <visualize>true</visualize>
+            <update_rate>10</update_rate>
+            <ray>
+                <scan>
+                    <horizontal>
+                        <samples>360</samples>
+                        <resolution>1</resolution>
+                        <min_angle>0.00</min_angle>
+                        <max_angle>3.14</max_angle>
+                    </horizontal>
+                </scan>
+                <range>
+                    <min>0.3</min>
+                    <max>8</max>
+                </range>
+            </ray>
+            <plugin name="laser_controller" filename="libgazebo_ros_ray_sensor.so">
+                <ros>
+                    <argument>~/out:=scan</argument>
+                </ros>
+                <output_type>sensor_msgs/LaserScan</output_type>
+                <frame_name>laser_frame</frame_name>
+            </plugin>
+        </sensor>
     </gazebo>
 
 </robot>
