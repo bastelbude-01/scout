@@ -2,13 +2,13 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
     <!-- Cam-->
-    <joint name="cam_joint" type="fixed">
+    <joint name="camera_joint" type="fixed">
         <parent link="chassis"/>
-        <child link="cam"/>
+        <child link="camera_link"/>
         <origin xyz="-0.04 0 0.138 "/>               
     </joint>
     
-    <link name="cam">
+    <link name="camera_link">
         <visual>
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>            
             <geometry>
@@ -26,11 +26,19 @@
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
         </xacro:inertial_box>
     </link>
-    <gazebo reference="cam">
+    <gazebo reference="camera_link">
         <material>Gazebo/White</material>
     </gazebo>
 
-    <gazebo reference="cam">
+    <joint name="cam_joint" type="fixed">
+        <parent link="camera_link"/>
+        <child link="camera_link_optocal"/>
+        <origin xyz="0 0 0" rpy="${-pi/2} 0.0 ${-pi/2}"/>
+    </joint>
+
+    <link name="camera_link_optical"/>
+
+    <gazebo reference="camera_link">
         <material>Gazebo/White</material>
     
         <sensor name="camera" type="camera">
