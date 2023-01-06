@@ -31,7 +31,7 @@
     </gazebo>
 
     <gazebo reference="cam">
-        <material>Gazebo/Orange</material>
+        <material>Gazebo/White</material>
     
         <sensor name="camera" type="camera">
             <pose> 0 0 0 0 0 0 </pose>
