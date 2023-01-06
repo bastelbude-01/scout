@@ -5,7 +5,7 @@
     <joint name="camera_joint" type="fixed">
         <parent link="chassis"/>
         <child link="camera_link"/>
-        <origin xyz="-0.04 0 0.138 "/>               
+        <origin xyz="-0.04 0 0.138 " rpy="0.0 0.0 3.14"/>               
     </joint>
     
     <link name="camera_link">
@@ -32,8 +32,8 @@
 
     <joint name="cam_joint" type="fixed">
         <parent link="camera_link"/>
-        <child link="camera_link_optocal"/>
-        <origin xyz="0 0 0" rpy="${-pi/2} 0.0 ${-pi/2}"/>
+        <child link="camera_link_optical"/>
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
     </joint>
 
     <link name="camera_link_optical"/>
@@ -54,7 +54,7 @@
                 </image>
                 <clip>
                     <near>0.05</near>
-                    <far>7.0</far>                    
+                    <far>8.0</far>                    
                 </clip>
             </camera>
             <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
