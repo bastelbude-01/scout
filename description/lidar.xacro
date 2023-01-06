@@ -57,7 +57,9 @@
     <gazebo reference="laser_frame">
         <material>Gazebo/Red</material>
     </gazebo>
-        <!-- Gazebo Plugin-->
+
+        <!-- Gazebo Plugin -->
+
     <gazebo reference="laser_frame">
         <material>Gazebo/Red</material>
     
