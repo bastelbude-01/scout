@@ -10,6 +10,7 @@ from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch_ros.actions import Node
 
 
+
 def generate_launch_description():
 
 
@@ -21,14 +22,14 @@ def generate_launch_description():
     rsp = IncludeLaunchDescription(
                 PythonLaunchDescriptionSource([os.path.join(
                     get_package_share_directory(package_name),'launch','rsp.launch.py'
-                )]), launch_arguments={'use_sim_time': 'true'}.items() #, 'use_ros2_control': 'true'
+                )]), launch_arguments={'use_sim_time': 'true', 'use_ros2_control': 'true'}.items() 
     )
 
-    #camera = IncludeLaunchDescription(
-    #            PythonLaunchDescriptionSource([os.path.join(
-    #                get_package_share_directory(package_name),'launch','camera.launch.py'
-    #            )]) 
-    #)
+    camera = IncludeLaunchDescription(
+                PythonLaunchDescriptionSource([os.path.join(
+                    get_package_share_directory(package_name),'launch','camera.launch.py'
+                )]) 
+    )
 
     #joystick = IncludeLaunchDescription(
     #            PythonLaunchDescriptionSource([os.path.join(
@@ -52,17 +53,17 @@ def generate_launch_description():
                         output='screen')
 
 
-    #diff_drive_spawner = Node(
-    #    package="controller_manager",
-    #    executable="spawner.py",
-    #    arguments=["diff_cont"],
-    #)
+    diff_drive_spawner = Node(
+        package="controller_manager",
+        executable="spawner.py",
+        arguments=["diff_cont"],
+    )
 
-    #joint_broad_spawner = Node(
-    #    package="controller_manager",
-    #    executable="spawner.py",
-    #    arguments=["joint_broad"],
-    #)
+    joint_broad_spawner = Node(
+        package="controller_manager",
+        executable="spawner.py",
+        arguments=["joint_broad"],
+    )
 
 
     # Code for delaying a node (I haven't tested how effective it is)
@@ -86,10 +87,10 @@ def generate_launch_description():
     # Launch them all!
     return LaunchDescription([
         rsp,
-        #camera,
+        camera,
         #joystick,
         gazebo,
         spawn_entity,
-        #diff_drive_spawner,
-        #joint_broad_spawner
+        diff_drive_spawner,
+        joint_broad_spawner
     ])
