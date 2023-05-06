@@ -1,3 +1,6 @@
 controller_manager:
   ros__parameters:
     use_sim_time: true
+gazebo:
+  ros__parameters:
+    publish_rate: 30.0

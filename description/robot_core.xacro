@@ -34,6 +34,18 @@
         <color rgba="1.0 0.0 0.0 1.0"/>
     </material>
 
+    <!-- BASE_FOOT_PRINT-->
+
+    <link name="base_footprint">        
+    </link>
+
+    <!-- FOOTPRINT JOINT -->
+    <joint name="basefootprint_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="base_footprint"/>
+        <origin xyz="0.0 0.0 0.0"/>        
+    </joint>
+
     <!-- BASE LINK -->
 
     <link name="base_link">
