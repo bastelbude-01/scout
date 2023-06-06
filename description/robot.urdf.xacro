@@ -1,17 +1,23 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro"  name="scout">
 
-    <xacro:include filename="scout_core.xacro"/>
 
-    <xacro:include filename="gazebo_control.xacro"/>
-
-    
-<!--
+    <!-- Argumente -->
     <xacro:arg name="use_ros2_control" default="false"/>
 
     <xacro:arg name="sim_mode" default="true"/>
 
-    
+
+    <!-- Roboter Teile -->
+    <xacro:include filename="robot_core.xacro"/>
+
+
+    <xacro:include filename="lidar.xacro"/>
+ 
+    <xacro:include filename="camera.xacro"/>
+
+
+    <!-- Controller -->
 
     <xacro:if value="$(arg use_ros2_control)">
         <xacro:include filename="ros2_control.xacro"/>
@@ -22,10 +28,7 @@
 
     
 
-    <xacro:include filename="lidar.xacro"/>
- 
-    <xacro:include filename="camera.xacro"/>
+    
 
--->
 
 </robot>

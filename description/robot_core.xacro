@@ -67,7 +67,7 @@
             <material name="orange"/>
         </visual>
         <collision>
-            <origin xyz="0.093 0.0 0.075"/>
+            <origin xyz="0.017 0.0 0.017"/>
             <geometry>
                 <box size="0.034 0.25 0.034"/>
             </geometry>            
@@ -110,15 +110,22 @@
 
     <gazebo reference="left_wheel">
         <material>Gazebo/Blue</material>
+        <mu1 value="100000000000000.0" /><!-- 0.001-->
+        <mu2 value="100000000000000.0" />
+        <kp value="1000000000000.0" />
+        <kd value="10"/>
+        <minDepth>0.001</minDepth>
+        <maxVel>0.1</maxVel>
+        <fdir1>1 0 0</fdir1>
     </gazebo>
     
     <!-- RIGHT WHEEL  LINK -->
     
     <joint name="right_wheel_joint" type="continuous">
-        <origin xyz="0 0.128 0.017" rpy="${pi/2} 0 0"/>
+        <origin xyz="0 0.128 0.017" rpy="-${pi/2} 0 0"/>
         <parent link="base_link"/>
         <child link="right_wheel"/>
-        <axis xyz="0.0 0.0 1.0"/>
+        <axis xyz="0.0 0.0 -1.0"/>
         <limit lower="0.0" upper="0.0" effort="0.0" velocity="0.0"/>
     </joint>
 
@@ -141,12 +148,19 @@
 
     <gazebo reference="right_wheel">
         <material>Gazebo/Blue</material>
+        <mu1 value="100000000000000.0" /><!-- 0.001-->
+        <mu2 value="100000000000000.0" />
+        <kp value="1000000000000.0" />
+        <kd value="10"/>
+        <minDepth>0.001</minDepth>
+        <maxVel>0.1</maxVel>
+        <fdir1>1 0 0</fdir1>
     </gazebo>
 
     <!-- Caster Wheel Holder and Caster Wheel -->
 
     <joint name="caster_wheel_holder_joint" type="fixed">
-        <parent link="chassis"/>
+        <parent link="base_link"/>
         <child link="caster_wheel_holder"/>
         <origin xyz="0.25 0.0 0.0"/>
     </joint>
@@ -200,8 +214,13 @@
     </link>
     <gazebo reference="caster_wheel_link">
         <material>Gazebo/Blue</material>
-        <mu1 value="0.001"/>
-        <mu2 value="0.001"/>
+        <mu1 value="100000000000000.0" /><!-- 0.001-->
+        <mu2 value="100000000000000.0" />
+        <kp value="1000000000000.0" />
+        <kd value="10"/>
+        <minDepth>0.001</minDepth>
+        <maxVel>0.1</maxVel>
+        <fdir1>1 0 0</fdir1>
     </gazebo>
  
     <!-- BODY PARTS-->
