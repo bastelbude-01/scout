@@ -33,21 +33,20 @@
     </xacro:unless>
 
     <xacro:if value="$(arg sim_mode)">
+
+<!--
         <gazebo>
 
         <plugin name="diff_drive" filename="libgazebo_ros_diff_drive.so">
-
-            <!-- Reifen Infos -->
+            
             <left_joint>left_wheel_joint</left_joint>
             <right_joint>right_wheel_joint</right_joint>
             <wheel_separation>0.3</wheel_separation>
             <wheel_diameter>0.12</wheel_diameter>
-
-            <!-- LIMITS       -->
+            
             <max_wheel_torque>200</max_wheel_torque>
             <max_wheel_acceleration>10.0</max_wheel_acceleration>
-
-            <!-- Output       -->
+            
             <odometry_frame>odom</odometry_frame>
             <robot_base_frame>base_link</robot_base_frame>
 
@@ -57,7 +56,7 @@
 
         </plugin>
         </gazebo>
-    <!-- 
+     -->
         <ros2_control name="GazeboSystem" type="system">
             <hardware>
                 <plugin>gazebo_ros2_control/GazeboSystem</plugin>
@@ -78,7 +77,7 @@
                 <state_interface name="velocity"/>
                 <state_interface name="position"/>                            
             </joint>
-        </ros2_control> -->
+        </ros2_control> 
     </xacro:if>
 
 
