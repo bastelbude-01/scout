@@ -185,5 +185,68 @@
         <mu1 value="0.001"/>
         <mu2 value="0.001"/>
     </gazebo>
+
+    <!-- BODY PARTS-->
+
+    <joint name="body_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="body"/>
+        <origin xyz="-0.065 0.0 0.069"/>        
+    </joint>
+
+    <link name="body">
+        <visual>
+            <origin xyz="0.0 0.0 0.0"/>
+            <geometry>
+                <box size="0.4 0.11 0.07"/>
+            </geometry>
+            <material name="orange"/>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0"/>
+            <geometry>
+                <box size="0.4 0.11 0.07"/>
+            </geometry>            
+        </collision>
+        <xacro:inertial_box mass="0.5" x="0.4" y="0.11" z="0.07">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </xacro:inertial_box>
+    </link>
+
+    <gazebo reference="body">
+        <material>Gazebo/Orange</material>
+    </gazebo>
+
+    <!-- BodyTop-->
+
+    <joint name="body_top_joint" type="fixed">
+        <parent link="body"/>
+        <child link="body_top"/>
+        <origin xyz="-0.05 0.0 0.07"/>
+    </joint>    
+
+    <link name="body_top">
+        <visual>
+            <origin xyz="0.0 0.0 0.0"/>
+            <geometry>
+                <box size="0.3 0.11 0.07"/>
+            </geometry>
+            <material name="orange"/>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0"/>
+            <geometry>
+                <box size="0.3 0.11 0.07"/>
+            </geometry>            
+        </collision>
+        <xacro:inertial_box mass="0.5" x="0.3" y="0.11" z="0.07">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </xacro:inertial_box>
+    </link>
+
+    <gazebo reference="body_top">
+        <material>Gazebo/Orange</material>
+    </gazebo>
+
     
 </robot>
