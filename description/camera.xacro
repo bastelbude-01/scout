@@ -3,9 +3,9 @@
 
     <!-- Cam-->
     <joint name="camera_joint" type="fixed">
-        <parent link="chassis"/>
+        <parent link="base_link"/>
         <child link="camera_link"/>
-        <origin xyz="-0.04 0 0.138 " rpy="0.0 0.0 3.14"/>               
+        <origin xyz="0.1 0 0.14 " rpy="0.0 0.0 0.0"/>               
     </joint>
     
     <link name="camera_link">

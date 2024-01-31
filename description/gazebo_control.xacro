@@ -8,7 +8,7 @@
             <!-- Reifen Infos -->
             <left_joint>left_wheel_joint</left_joint>
             <right_joint>right_wheel_joint</right_joint>
-            <wheel_separation>0.36</wheel_separation>
+            <wheel_separation>0.256</wheel_separation>
             <wheel_diameter>0.12</wheel_diameter>
 
             <!-- LIMITS       -->
